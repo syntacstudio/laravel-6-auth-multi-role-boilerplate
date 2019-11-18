@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Role;
 use App\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,6 +21,7 @@ class UsersTableSeeder extends Seeder
         $admin->name = "Jhon Doe";
         $admin->email = "admin@test.app";
         $admin->password = bcrypt('secret');
+        $admin->email_verified_at = Carbon::now();
         $admin->save();
         $admin->roles()->attach($role_admin);
 
@@ -27,6 +29,7 @@ class UsersTableSeeder extends Seeder
         $user->name = "Gal Gadot";
         $user->email = "user@test.app";
         $user->password = bcrypt('secret');
+        $user->email_verified_at = Carbon::now();
         $user->save();
         $user->roles()->attach($role_user);
 
